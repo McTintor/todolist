@@ -1,0 +1,21 @@
+body {
+    height: 100%;
+    width: 100%;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+#content {
+    height: 40%;
+    width: 60%;
+    background: rgb(46,237,225);
+    background: linear-gradient(90deg, rgba(46,237,225,0.21332282913165268) 0%, rgba(92,87,168,1) 0%, rgba(184,150,103,1) 19%, rgba(120,184,73,0.21332282913165268) 62%);
+}
+
+#sidebar {
+    width: 20%;
+}
+
+#maincontent {
+    width: 80%;
+}
