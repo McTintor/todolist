@@ -7,9 +7,24 @@
 </head>
 <body>
     <h1 id="title">To Do App 📋🖋️</h1>
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Task</h2>
+            <form id="taskForm">
+                <label for="taskName">Task Name:</label>
+                <input type="text" id="taskName" name="taskName" required><br><br>
+                <label for="taskDesc">Task Description:</label><br>
+                <textarea id="taskDesc" name="taskDesc" rows="4" required></textarea><br><br>
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+    </div>
     <div id="content">
         <div id="sidebar"></div>
-        <div id="maincontent"></div>
+        <div id="taskList">
+            <button id="addTaskBtn">➕</button>
+        </div>
     </div>
 </body>
 <footer>&copy; <a href="https://github.com/McTintor">Igor Tintor</a> 2024.</footer>

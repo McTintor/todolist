@@ -7,12 +7,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Production',
       template: './src/template.html'
     }),
   ],
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].[contenthash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
