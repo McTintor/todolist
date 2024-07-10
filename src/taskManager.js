@@ -5,13 +5,13 @@ export class Task {
     }
 }
 
-export const taskList = [];
+export const tasks = [];
 
 export function addTask(name, description) {
     const newTask = new Task(name, description);
-    taskList.push(newTask);
+    tasks.push(newTask);
 }
 
 export function getTasks() {
-    return taskList;
+    return tasks;
 }
