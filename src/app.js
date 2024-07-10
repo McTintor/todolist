@@ -1,11 +1,9 @@
 import "./main.css";
-import { Task } from "./taskManager";
-import { tasks } from "./taskManager";
 import { addTask } from "./taskManager";
 import { getTasks } from "./taskManager";
 
 document.addEventListener('DOMContentLoaded', () => {
-    let taskModal = document.getElementById('taskModal'); // Changed to let
+    let taskModal = document.getElementById('taskModal');
     const addTaskBtn = document.getElementById('addTaskBtn');
     const taskForm = document.getElementById('taskForm');
     const taskList = document.getElementById('taskList');
@@ -46,6 +44,4 @@ document.addEventListener('DOMContentLoaded', () => {
         taskList.appendChild(taskElement);
       });
     }
-
-    displayTasks();
 });
