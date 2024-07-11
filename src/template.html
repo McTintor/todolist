@@ -14,6 +14,8 @@
             <form id="taskForm">
                 <label for="taskName">Task Name:</label>
                 <input type="text" id="taskName" name="taskName" required><br><br>
+                <label for="taskDate">Task Date:</label>
+                <input type="datetime-local" id="taskDate" name="taskDate" required><br><br>
                 <label for="taskDesc">Task Description:</label><br>
                 <textarea id="taskDesc" name="taskDesc" rows="15" required></textarea><br><br>
                 <button type="submit" class="submitButton">Add Task</button>
@@ -22,7 +24,12 @@
     </div>
     <div id="content">
         <button id="addTaskBtn">➕</button>
-        <div id="sidebar"></div>
+        <div id="sidebar">
+            <button id="all" class="active">All Tasks 📋</button>
+            <button id="today">Today's Tasks 🗓️</button>
+            <button id="importantTasks">Important Tasks 🌟</button>
+            <button id="completed">Completed Tasks ✅</button>
+        </div>
         <div id="taskList">
         </div>
     </div>
