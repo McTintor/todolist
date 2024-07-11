@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function displayTasks() {
+      taskList.innerHTML = '';
       const tasks = getTasks();
       tasks.forEach(task => {
         const taskElement = document.createElement('div');
@@ -43,5 +44,5 @@ document.addEventListener('DOMContentLoaded', () => {
         taskElement.innerHTML = `<h3>${task.name}</h3><p>${task.description}</p>`;
         taskList.appendChild(taskElement);
       });
-    }
+    };
 });

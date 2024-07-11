@@ -15,3 +15,7 @@ export function addTask(name, description) {
 export function getTasks() {
     return tasks;
 }
+
+export function removeFirstTask() {
+    tasks.shift();
+}
