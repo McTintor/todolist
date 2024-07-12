@@ -1,15 +1,17 @@
 export class Task {
-    constructor(name, date, description) {
+    constructor(id, name, date, description, isImportant) {
+        this.id = id;
         this.name = name;
         this.date = date;
         this.description = description;
+        this.isImportant = isImportant;
     }
 }
 
 export const tasks = [];
 
-export function addTask(name, date, description) {
-    const newTask = new Task(name, date, description);
+export function addTask(id, name, date, description, isImportant) {
+    const newTask = new Task(id, name, date, description, isImportant);
     tasks.push(newTask);
 }
 
@@ -31,4 +33,8 @@ export function addToImportantTasks(task) {
 
 export function getImportantTasks() {
     return importantTasks;
+}
+
+export function generateUniqueId() {
+    return '_' + Math.random().toString(36).substr(2, 9);
 }
