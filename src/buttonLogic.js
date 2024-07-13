@@ -40,3 +40,17 @@ import { tasks } from "./taskManager";
                
             }
         }
+
+        export function selectCategoryButton(activeButtonId) {
+            const buttons = ['all', 'importantTasks'];
+            
+            buttons.forEach(buttonId => {
+                if (buttonId === activeButtonId) {
+                    document.getElementById(buttonId).classList.add('active');
+                    document.getElementById(buttonId).classList.remove('inactive');
+                } else {
+                    document.getElementById(buttonId).classList.add('inactive');
+                    document.getElementById(buttonId).classList.remove('active');
+                }
+            });
+        }

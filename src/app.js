@@ -7,6 +7,7 @@ import { deleteTask } from "./taskManager";
 import { addToImportantTasks } from "./taskManager";
 import { getImportantTasks } from "./taskManager";
 import { generateUniqueId } from "./taskManager";
+import { selectCategoryButton } from "./buttonLogic";
 
 document.addEventListener('DOMContentLoaded', () => {
     let taskModal = document.getElementById('taskModal');
@@ -47,11 +48,30 @@ document.addEventListener('DOMContentLoaded', () => {
       taskModal.style.display = 'none';
     });
 
+    const allTasksButton = document.getElementById('all');
+    const importantTasksButton = document.getElementById('importantTasks');
+
+    selectCategoryButton(allTasksButton.id);
+
+    allTasksButton.addEventListener('click', () => {
+      selectCategoryButton(allTasksButton.id);
+      displayTasks();
+    });
+    importantTasksButton.addEventListener('click', () => {
+      selectCategoryButton(importantTasksButton.id);
+      displayTasks();
+    });
+
 
     function displayTasks() {
       taskList.innerHTML = '';
 
-      const tasks = getTasks()
+      let tasks = getTasks();
+
+      if (importantTasksButton.classList.contains('active')) {
+        tasks = tasks.filter(task => task.isImportant === true);
+      };
+      
       tasks.forEach(task => {
 
         const datePart = task.date.split("T")[0];
@@ -96,12 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
       
       importantButton.addEventListener('click', () => {
           toggleImportantButton(task.id);
-          // addToImportantTasks(task);
       });
       
       completeButton.addEventListener('click', () => {
           // toggleCheckButton(task);
-          // completeTask(task);
       });
 
         taskList.appendChild(taskElement);
