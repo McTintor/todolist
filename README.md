@@ -1,4 +1,4 @@
-#To Do App
+# To Do App
 
 Live version here: https://mctintor.github.io/todolist/
 
