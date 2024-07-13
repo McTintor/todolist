@@ -1,23 +1,26 @@
 import { tasks } from "./taskManager";
 
-        export function toggleCheckButton(task) {
+        export function toggleCheckButton(id) {
 
-            const taskList = document.querySelectorAll('.task');
-            const indexOfTaskElement = tasks.indexOf(task);
-            const targetTaskDOM = taskList[indexOfTaskElement]; 
-            const targetTaskObject = tasks[indexOfTaskElement];
-            const button = targetTaskDOM.querySelector('.complete-task');
 
-    // if (targetTaskObject.isImportant === false) {
-    //     button.innerHTML = "✅";
-    //     button.classList.remove('toggledOn');
-    //     targetTaskObject.isImportant = true;
-    // } else {
-    //     button.innerHTML = "☑️";
-    //     button.classList.add('toggledOn');
-    //     targetTaskObject.isImportant = false;
-    // }
-}
+            for (let i = 0; i< tasks.length; i++) {
+                if (tasks[i].id === id) {
+                    const targetTaskDOM = document.querySelector('[data-id="' + tasks[i].id + '"]');; 
+                    const targetTaskObject = tasks[i];
+                    const button = targetTaskDOM.querySelector('.complete-task');
+        
+                        if (targetTaskObject.isCompleted === false) {
+                            button.innerHTML = "✅";
+                            targetTaskObject.isCompleted = true;
+                        } else {
+                            button.innerHTML = "☑️";
+                            targetTaskObject.isCompleted = false;
+                        }
+                }
+               
+            }
+        }
+
 
         export function toggleImportantButton(id) {
 
@@ -29,9 +32,8 @@ import { tasks } from "./taskManager";
                     const button = targetTaskDOM.querySelector('.mark-important');
         
                         if (targetTaskObject.isImportant === false) {
-                            button.innerHTML = "🌟";;
+                            button.innerHTML = "🌟";
                             targetTaskObject.isImportant = true;
-                            console.log('asd')
                         } else {
                             button.innerHTML = "⭐";
                             targetTaskObject.isImportant = false;
@@ -42,7 +44,7 @@ import { tasks } from "./taskManager";
         }
 
         export function selectCategoryButton(activeButtonId) {
-            const buttons = ['all', 'importantTasks'];
+            const buttons = ['all', 'today', 'importantTasks', 'completed'];
             
             buttons.forEach(buttonId => {
                 if (buttonId === activeButtonId) {

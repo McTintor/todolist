@@ -4,10 +4,9 @@ import { getTasks } from "./taskManager";
 import { toggleCheckButton } from "./buttonLogic";
 import { toggleImportantButton } from "./buttonLogic";
 import { deleteTask } from "./taskManager";
-import { addToImportantTasks } from "./taskManager";
-import { getImportantTasks } from "./taskManager";
 import { generateUniqueId } from "./taskManager";
 import { selectCategoryButton } from "./buttonLogic";
+import { isToday } from "./taskManager";
 
 document.addEventListener('DOMContentLoaded', () => {
     let taskModal = document.getElementById('taskModal');
@@ -50,6 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const allTasksButton = document.getElementById('all');
     const importantTasksButton = document.getElementById('importantTasks');
+    const completedTasksButton = document.getElementById('completed');
+    const todaysTasksButton = document.getElementById('today');
 
     selectCategoryButton(allTasksButton.id);
 
@@ -61,6 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
       selectCategoryButton(importantTasksButton.id);
       displayTasks();
     });
+    completedTasksButton.addEventListener('click', () => {
+      selectCategoryButton(completedTasksButton.id);
+      displayTasks();
+    })
+    todaysTasksButton.addEventListener('click', () => {
+      selectCategoryButton(todaysTasksButton.id);
+      displayTasks();
+    })
 
 
     function displayTasks() {
@@ -70,7 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (importantTasksButton.classList.contains('active')) {
         tasks = tasks.filter(task => task.isImportant === true);
-      };
+      } else if (completedTasksButton.classList.contains('active')) {
+        tasks = tasks.filter(task => task.isCompleted === true);
+      } else if (todaysTasksButton.classList.contains('active')) {
+        tasks = tasks.filter(task => isToday(task.date) === true);
+      }
       
       tasks.forEach(task => {
 
@@ -102,15 +115,19 @@ document.addEventListener('DOMContentLoaded', () => {
         
 
         const completeButton = document.createElement('button');
-        completeButton.textContent = '☑️';
         completeButton.className = 'complete-task';
+        if (task.isCompleted === true) {
+          completeButton.textContent = '✅';
+        } else {
+          completeButton.textContent = '☑️';
+        }
 
-        taskElement.appendChild(deleteButton);
-        taskElement.appendChild(importantButton);
         taskElement.appendChild(completeButton);
+        taskElement.appendChild(importantButton);
+        taskElement.appendChild(deleteButton);
 
         deleteButton.addEventListener('click', () => {
-          deleteTask(task);
+          deleteTask(task.id);
           displayTasks();
       });
       
@@ -119,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       
       completeButton.addEventListener('click', () => {
-          // toggleCheckButton(task);
+          toggleCheckButton(task.id);
       });
 
         taskList.appendChild(taskElement);
