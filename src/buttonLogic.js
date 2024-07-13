@@ -12,6 +12,7 @@ import { tasks } from "./taskManager";
                         if (targetTaskObject.isCompleted === false) {
                             button.innerHTML = "✅";
                             targetTaskObject.isCompleted = true;
+                            targetTaskObject.isImportant = false;
                         } else {
                             button.innerHTML = "☑️";
                             targetTaskObject.isCompleted = false;
