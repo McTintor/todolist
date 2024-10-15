@@ -13,7 +13,7 @@ Live version here: https://mctintor.github.io/todolist/
 - JavaScript: Handles all task logic including task creation, task state changes (completed/important), and category-based filtering.
 
 ## How to Use
-1. Clone the repository: https://github.com/McTintor/todolist.git
+1. Clone the repository: git clone https://github.com/McTintor/todolist.git
 2. Navigate to the project directory: cd task-manager-app
 3. Open index.html in a browser to run the app.
 
