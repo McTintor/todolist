@@ -1,5 +1,5 @@
 # Task Manager App
-A simple task management app built with vanilla JavaScript that allows users to add, manage, and categorize tasks efficiently.
+A simple task management app built with vanilla JavaScript that allows users to add, manage and categorize tasks efficiently.
 Live version here: https://mctintor.github.io/todolist/
 
 ## Features
